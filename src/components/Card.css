@@ -1,6 +1,10 @@
 .flashcard{
-    
+
     background-color: paleturquoise;
     height: 200px;
     width: 400px; 
+    border-radius: 3px;
+    margin: auto; 
+
 }
+

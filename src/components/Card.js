@@ -1,16 +1,34 @@
-import React from 'react';
-import './Card.css'
+import { useState } from 'react'; 
+import './Card.css';
 
 
-const card = (props) => {
-    
+const Card = ({question, answer}) => {
+
+const [ showAnswer, setShowAnswer ]  =  useState(false)
+const [ isDone, setIsDone ] = useState(false)
+
+
+
+const showReverseSideHandler = () => {
+    setShowAnswer(!showAnswer) // when button is clicked, change the state of show answer to be the opposite of its current state  
+}
+
+const doneButtonHandler = () => {
+    setIsDone(!isDone)
+}
 
     return(
-       <div className="flashcard"> 
-            <p>{props.question}</p>
-            <p>{props.answer} </p>
-       </div> 
+      (!isDone &&
+        <div className="flashcard">
+            {!showAnswer ? <p> { question } </p> : <p> { answer }</p>}
+            <button onClick={showReverseSideHandler}> { showAnswer ? 'Show Question' : 'Show Answer' }</button>
+            <button onClick={doneButtonHandler}> Mark as Done </button>
+        </div> 
+        
+    )
     )
 }
 
-export default card; 
+export default Card; 
+
+
