@@ -36,30 +36,34 @@ function App() {
   ];
 
     const [ cardInformation, setCardInformation ] = useState(questions)
+    // cardInformation IS  questions
     
     const markQuestionAsDone = (cardID) => {
+
       let updatedCardInformation =  cardInformation.map( (question) => {
               if(question.id  === cardID){
                  question.isDone = true
                }
               
-              return question; 
+              return question;
          })
-         console.log(updatedCardInformation)
-    
+      
+        //  console.log(updatedCardInformation)
+         setCardInformation(updatedCardInformation);
          
     }
 
-    markQuestionAsDone(3); 
+    // markQuestionAsDone(3); 
+    // console.log(cardInformation)
 
   return (
     <div className="App">
       <Card
-          question={cardInformation[0].question} 
-          answer={cardInformation[0].answer}
+          question={cardInformation[3].question} 
+          answer={cardInformation[3].answer}
           
           /> 
-      {/* <button onClick={doneButtonHandler}> Mark as Done </button> */}
+     <button onClick={markQuestionAsDone(cardInformation[3].id)}> Mark as Done </button>
     </div>
   );
 }
